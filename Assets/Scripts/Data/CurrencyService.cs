@@ -29,7 +29,6 @@ public class CurrencyService : MonoBehaviour {
 
     public void AdjustCoins(int amount) {
         DataService.Instance.Data.Coins += amount;
-        Debug.Log("Current B00! Coins: " + DataService.Instance.Data.Coins);
         OnCoinsChanged?.Invoke();
     }
 

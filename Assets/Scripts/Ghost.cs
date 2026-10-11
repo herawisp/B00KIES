@@ -3,17 +3,51 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour {
 
-    public Transform Bookie;
+    //==============================================================================================//
+    //==============================================================================================//
+
+    public Bookie Bookie;
+
+    private Animator _animator;
+
+    //==============================================================================================//
+    //==============================================================================================//
+
+    void Awake() {
+        _animator = GetComponent<Animator>();
+    }
+
+    void Start() {
+        _animator.SetBool("IsGolden", Bookie.Golden);
+    }
+
+    //==============================================================================================//
+    //==============================================================================================//
 
     public void Spawn() {
-        transform.position = Bookie.position + (Vector3) Random.onUnitCircle * 3f;
-        transform.localScale = Bookie.localScale;
-        transform.DOMove(Bookie.position, 0.5f)
+        float ghostSpawnDirection = GameSettings.Instance.GhostSpawnDistance;
+        float ghostMovingDuration = GameSettings.Instance.GhostMovingDuration;
+
+        transform.position = Bookie.transform.position + (Vector3) Random.onUnitCircle * ghostSpawnDirection;
+        transform.localScale = Bookie.transform.localScale;
+        transform.DOMove(Bookie.transform.position, ghostMovingDuration)
             .SetLink(gameObject)
-            .OnComplete(() => {
-                Destroy(Bookie.gameObject);
-                CurrencyService.Instance.AdjustCoins(1);
-                Destroy(gameObject, 2f);
-            });
+            .OnComplete(() => { OnMovingFinished(); });
     }
+
+    //==============================================================================================//
+    //==============================================================================================//
+    
+    void OnMovingFinished() {
+        Destroy(Bookie.gameObject); // TODO: Setup Bookie ObjectPool
+        _animator.SetBool("IsEating", true);
+    }
+
+    void OnExploded() {
+        Destroy(gameObject);
+        CurrencyService.Instance.AdjustCoins(1); // TODO: Code the coin yield amount
+    }
+
+    //==============================================================================================//
+    //==============================================================================================//
 }

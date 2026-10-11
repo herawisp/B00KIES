@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour {
 
+    //==============================================================================================//
+    //==============================================================================================//
+
     public List<GameObject> prefabs;
 
     private readonly Queue<GameObject> pool = new();
     private readonly HashSet<GameObject> pooled = new();
     private readonly Dictionary<GameObject, Coroutine> pendingReturns = new();
+
+    //==============================================================================================//
+    //==============================================================================================//
 
     void Start() {
         if (prefabs.Count == 1) return;
@@ -16,6 +22,9 @@ public class ObjectPool : MonoBehaviour {
             ReturnObject(Instantiate(prefab));
         }
     }
+
+    //==============================================================================================//
+    //==============================================================================================//
 
     public GameObject GetObject() {
         if (pool.Count > 0) {
@@ -28,7 +37,10 @@ public class ObjectPool : MonoBehaviour {
     }
 
     public void ReturnObject(GameObject obj) {
-        if (!pooled.Add(obj)) return;
+        if (!pooled.Add(obj)) {
+            Debug.LogWarning($"{obj.name} was returned twice or re-enabled outside the pool", obj);
+            return;
+        }
         CancelPendingReturn(obj);
         obj.SetActive(false);
         pool.Enqueue(obj);
@@ -38,6 +50,9 @@ public class ObjectPool : MonoBehaviour {
         CancelPendingReturn(obj);
         pendingReturns[obj] = StartCoroutine(ReturnLaterRoutine(obj, time));
     }
+
+    //==============================================================================================//
+    //==============================================================================================//
 
     IEnumerator ReturnLaterRoutine(GameObject obj, float time) {
         yield return new WaitForSeconds(time);
@@ -53,4 +68,7 @@ public class ObjectPool : MonoBehaviour {
         if (prefabs.Count == 1) return prefabs[0];
         return prefabs[Random.Range(0, prefabs.Count)];
     }
+    
+    //==============================================================================================//
+    //==============================================================================================//
 }

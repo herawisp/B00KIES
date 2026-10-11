@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef39228b1c417e84480004933e969a95, type: 3}
+  m_Name: Chocolate Chip Cookie
+  m_EditorClassIdentifier: Assembly-CSharp::ChocoChip
+  Sprite: {fileID: 21300000, guid: 63c3b35390ca1fd4e8868521b6e049fe, type: 3}
+  CookieType: 0
+  DisplayName: Choco Chip Cookie
+  Description: The starting cookie. Pops in a single hit.
+  Cost: 0

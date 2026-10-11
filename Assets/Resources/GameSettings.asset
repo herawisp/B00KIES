@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e1b36b48fa99b740aef64299a85ba0b, type: 3}
+  m_Name: GameSettings
+  m_EditorClassIdentifier: Assembly-CSharp::GameSettings
+  CookieCooldown: 0.5000001
+  MultishotChance: 75
+  GoldenBookieChance: 50
+  ShootingRadius: 0.2
+  BaseCookieCooldown: 3
+  BaseMultishotChance: 0
+  BaseGoldenBookieChance: 0
+  BaseShootingRadius: 0.2
+  CookieCooldownDecreaseRate: 0.1
+  MultishotChanceIncreaseRate: 5
+  GoldenBookieChanceIncreaseRate: 5
+  ShootingRadiusChanceIncreaseRate: 0.2
+  BookiePrefab: {fileID: 5688118835123374724, guid: c9f9cedf7d3544048b2d64a23d40c150, type: 3}
+  GhostPrefab: {fileID: 1586717847336244693, guid: 69bf16b8b19fa6b409908b173075f111, type: 3}
+  BookieSpawnDistance: 2
+  BookieMovingDuration: 0.5
+  GhostSpawnDistance: 2
+  GhostMovingDuration: 0.5
+  ShakeDuration: 0.2
+  ShakeMagnitude: 4
+  BatterUpgrade: {fileID: 11400000, guid: f21c928d76f4d714bac14fa6be0a52ac, type: 2}
+  BatchUpgrade: {fileID: 11400000, guid: 394378b62b192154c9748f99a502c470, type: 2}
+  GlazeUpgrade: {fileID: 11400000, guid: 0757b4f7724c9644599b05cb2055a2bc, type: 2}
+  CutterUpgrade: {fileID: 11400000, guid: 9355a2fc43a9c234fbb110cea53c73c3, type: 2}
+  OvenspreadUpgrade: {fileID: 11400000, guid: 01e0b31ac3d6c0149ad64b489fec6918, type: 2}
