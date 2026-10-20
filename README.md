@@ -127,10 +127,10 @@ config:
 flowchart TD
   start([Game Start])
   start --> spawn[Cookie Spawns in Arc]
-  spawn --> click{Player Clicks Cookie?}
+  spawn --> clickCheck{Player Clicks Cookie?}
 
-  click -->|Yes| hit[Cookie Shot]
-  click -->|No| fall[Cookie Falls]
+  clickCheck -->|Yes| hit[Cookie Shot]
+  clickCheck -->|No| fall[Cookie Falls]
   fall --> spawn
 
   hit --> multi{Multishot Chance?}
